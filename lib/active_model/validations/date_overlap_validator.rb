@@ -12,7 +12,7 @@ module ActiveModel
           dates = record.class.where("? < #{ends_at_field} AND ? > #{starts_at_field}", starts_at, ends_at)
 
           if record.persisted?
-            dates = dates.where('id != ?', self.id)
+            dates = dates.where('id != ?', record.id)
           end
 
           dates = dates.count
